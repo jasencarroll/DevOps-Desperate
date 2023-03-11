@@ -58,4 +58,7 @@ ansible-playbook -l dockerhosts aws-cloudwatch.yml
 
 Go to the Vagrant directory and `vagrant up` . If you aren't familiar, this may take some time.
 
-Once that is done you now have Ubuntu in Ubuntu. Let's see how many deep into the inception we are going today. 
+Once that is done you now have Ubuntu in Ubuntu. Let's see how many deep into the inception we are going today. Kewl beans. (I guess if you're on Apple silicone and running QTM for Ubuntu then a VM inside of Ubuntu that's 3 layers deep... so far.)
+
+## Chapter 2: Ansible for password, group, and user management
+
