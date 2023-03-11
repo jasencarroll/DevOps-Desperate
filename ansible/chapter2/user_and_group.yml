@@ -1,30 +1,41 @@
 - name: Ensure group 'developers' exists
+  #group module to create developers
   group:
     name: developers
     state: present
 
 - name: Create the user 'bender'
+  # user module to create bender
   user:
     name: bender
     shell: /bin/bash
+    # supplied a password hash for you that matches this threshold to save time
     password: $6$OStSJfA6FA$ffSDaJBWfSpmnwlC6QWJwLG3PgZWQhPYUSezmRvSiUFpwSWy/57KuUuLg/4yGBpKx2TWYsPDz9Yq7nL2I2XT3/
 
 - name: Assign 'bender' to the 'developers' group
+  # user module to assign user to group
   user:
     name: bender
     groups: developers
     append: yes
 
 - name: Create a directory named 'engineering'
+  # file module to create a new directory/protected resource
+  # all four parameters are necessary
   file:
     path: /opt/engineering
+    # state is what you're making here.
     state: directory
+    # gives root rwe access and other re - refer to chmod man page
     mode: 0750
     group: developers
 
 - name: Create a file in the engineering directory
+  # file module to create a new file
   file:
     path: "/opt/engineering/private.txt"
+    # here state is also a familiar program
     state: touch
+    # any user rwe access within developers
     mode: 0770
     group: developers

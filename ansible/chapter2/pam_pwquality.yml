@@ -1,13 +1,28 @@
 ---
+# What is the intent/name of this package
 - name: Install libpam-pwquality
+  # package module requires two parameters:
   package:
     name: "libpam-pwquality"
+    # note to remove a package set state to absent
     state: present
 
+# Configure to enforce complexity
+## Once again, the task starts with a name, Configure pam_pwquality, that describes its intent. Then it tells Ansible to use the lineinfile module to edit the PAM password file. The lineinfile module requires the path of the file to which you want to make changes. In this case, it is the PAM password file /etc/pam.d/common-password. Use a regular expression, or regexp, to find the line in the file you want to change. The regular expression locates the line that has pam_pwquality.so in it and replaces it with a new line. The replacement line parameter contains the pwquality configuration changes, which enforce more complexity. The options provided above enforce the following:
+### A minimum password length of 12 characters
+### One lowercase letter
+### One uppercase letter
+#One numeric character
+#One nonalphanumeric character
+#Three retries
+#Disable root override
 - name: Configure pam_pwquality
+  # lineinfile module allows you to change a line in a file or check whether a line exists
   lineinfile:
+    # use this file to make changes to validate passwords
     path: "/etc/pam.d/common-password"
     regexp: "pam_pwquality.so"
+    # The negative values in the configuration line above inform pam_pwquality that it must have at least “one of” for that category. See the pam_pwquality man page (enter man pam_pwquality) for further details.
     line: "password required pam_pwquality.so minlen=12 lcredit=-1 ucredit=-1 dcredit=-1 ocredit=-1 retry=3 enforce_for_root"
     state: present
 
