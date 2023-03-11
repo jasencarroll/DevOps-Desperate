@@ -1,8 +1,11 @@
 ---
+# set host variables, similar to FLASK_APP=greeting.py
 - set_fact:
     greeting_application_file: "/opt/engineering/greeting.py"
 
 - name: Create sudoers file for developers group
+  # The Ansible template module is useful for creating files that will require some modification with variables.
+  # this actually using Jinja2
   template:
     src: "../ansible/templates/developers.j2"
     dest: "/etc/sudoers.d/developers"
