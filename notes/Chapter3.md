@@ -44,4 +44,13 @@ ssh -i ~/.ssh/dftd -p 2222 bender@localhost
 
 In the ssh command, you set the identity file to your private key 1 for authentication and set the remote SSH port to 2222. The default SSH port is 22, but Vagrant listens on a different SSH port to avoid conflicts on your local host. You also set the login user to bender and the SSH host to localhost 2.
 
-In mine I had to copy the dtfd manually to `authorized_keys` under `bender/.ssh/`.
+In mine I had to copy the dtfd manually to `authorized_keys` under `bender/.ssh/`. It also hasn't asked for two factor. Oh, Ansible is stopping after Chapter 2 for some reason. Ha! I need to git pull on my host.
+
+Ok now the two factor should work. Ok, yeah, my bad.
+
+```bash
+jasen@bertha vagrant(main)$ ssh -i ~/.ssh/dftd -p 2222 bender@localhost
+Enter passphrase for key '/home/jasen/.ssh/dftd': 
+(bender@localhost) Verification code: 
+Welcome to Ubuntu 20.04.5 LTS (GNU/Linux 5.4.0-144-generic x86_64)
+bender@dftd:~$ 
