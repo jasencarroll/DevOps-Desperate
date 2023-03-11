@@ -37,3 +37,46 @@ Ok on to Groups and back to `chapter2/pam_pwquality.yml`.
 ## Updating the VM
 
 Uncomment the two import tasks associated with this chapter in `site.yml`
+
+```bash
+vagrant up --provision
+```
+
+## Testing User and Group Permissions
+
+### User:
+
+```bash
+vagrant@dftd:~$ getent passwd bender
+bender:x:1002:1003::/home/bender:/bin/bash
+```
+
+### Group:
+
+```bash
+vagrant@dftd:~$ getent group developers
+developers:x:1002:bender
+```
+
+### Protected Resources
+
+```bash
+vagrant@dftd:~$ ls -al /opt/engineering/
+ls: cannot open directory '/opt/engineering/': Permission denied
+vagrant@dftd:~$ cat /opt/engineering/private.txt
+cat: /opt/engineering/private.txt: Permission denied
+```
+
+Now trying again with Bender
+
+```bash
+bender@dftd:~$ ls -al /opt/engineering/
+total 8
+drwxr-x--- 2 root developers 4096 Mar 11 21:38 .
+drwxr-xr-x 4 root root       4096 Mar 11 21:38 ..
+-rwxrwx--- 1 root developers    0 Mar 11 21:42 private.txt
+bender@dftd:~$ cat /opt/engineering/private.txt
+bender@dftd:~$ 
+```
+
+Success!

@@ -9,3 +9,8 @@ vagrant plugin install vagrant-vbguest
 
 Vagrnat is known as Infastructure as Code (IaC). The Vagrantfile helps you define the operating system, networking, providers (plug-ins), etc. Basic commands to get running include `vagrant up` followed by `vagrant ssh`. `vagrant status` is self explainatory as well as `vagrant destory` though the running VM will be gone afterwards.
 
+It's helpful to do the following at this point before continuing:
+
+```bash
+sudo apt update && sudo apt upgrade
+```
