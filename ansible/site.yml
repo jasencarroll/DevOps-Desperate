@@ -1,9 +1,16 @@
+# Playbook
 ---
+# name, also referred to as a play, you can have multiple if needed. 
 - name: Provision VM
+  # hosts set to all to match any Vagrant-built VMs because 
+  # Vagrant will autogenerate the ANsible inventory file. 
   hosts: all
+  # yes, you can become sudo and on Ubuntu that is ubuntu.
   become: yes
   become_method: sudo
   remote_user: ubuntu
+  # loads tasks from the .yml files so that you don't have
+  # a giant cluttered playbook/site.yml
   tasks:
     #  - import_tasks: chapter2/pam_pwquality.yml
     #  - import_tasks: chapter2/user_and_group.yml
