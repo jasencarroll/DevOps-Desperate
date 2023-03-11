@@ -4,7 +4,7 @@
 
 This repo is about me working through the book [DevOps for the Desperate](https://nostarch.com/devops-desperate).
 
-[Part 1: Infrastructure as Code, Configuration Management, Security, and Admin](https://github.com/jasencarroll/DevOps-Desperate/blob/main/notes/GettingStarted.md)
+[Part I: Infrastructure as Code, Configuration Management, Security, and Admin](https://github.com/jasencarroll/DevOps-Desperate/blob/main/notes/GettingStarted.md)
 
 - [Chapter 1: Setting Up a Virtual Machine](https://github.com/jasencarroll/DevOps-Desperate/blob/main/notes/Chapter1.md)
 - [Chapter 2: Using Ansible for Admin](https://github.com/jasencarroll/DevOps-Desperate/blob/main/notes/Chapter2.md)
