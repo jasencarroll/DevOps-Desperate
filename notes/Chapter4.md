@@ -19,3 +19,31 @@ I know Flask, Gunicorn, and Nginx so I'm not covering it here.
 ## Look at the examples from this chaper
 
 And the template in ansible/templates/developers.j2
+
+I think I could actually uncomment the previous chapters for faster build times. 
+
+```bash
+ssh -i ~/.ssh/dftd -p 2222 bender@localhost
+```
+
+```bash
+bender@dftd:~$ curl http://localhost:5000
+<h1 style='color:green'>Greetings!</h1>
+```
+
+Wow most successful deploy in my life - hole in one! 
+
+## Testing sudeos policy.
+
+```bash
+bender@dftd:~$ sudoedit /opt/engineering/greeting.py
+bender@dftd:~$ sudo systemctl stop greeting
+bender@dftd:~$ curl http://localhost:5000
+curl: (7) Failed to connect to localhost port 5000: Connection refused
+bender@dftd:~$ sudo systemctl start greeting
+bender@dftd:~$ curl http://localhost:5000
+<h1 style='color:green'>Greetings and Salutations!</h1>
+```
+
+## Audit Logs
+

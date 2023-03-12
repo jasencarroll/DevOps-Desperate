@@ -29,3 +29,8 @@
     policy: deny
     direction: incoming
 
+- name: Enable UFW
+  ufw:
+    state: enabled
+    policy: deny
+    direction: 80
