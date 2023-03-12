@@ -67,4 +67,80 @@ sudo docker container ls -f name=telnet-server
 
 Ok I think I had misunderstood. And naturally I skipped a sentence. I have to add jasen. The sudo issue was from not adding jasen to the docker group for sudoers like we learned in a previous chapter for bender. I still think this might be because I had a local install conflicting with the instructions from the book.
 
-Ok. 3 hours later I've finally fucking uninstalled docker entirely and I think I'm ready to start this chapter over after a reboot and that awfully long encryption password again. 
+Ok. 3 hours later I've finally fucking uninstalled docker entirely and I think I'm ready to start this chapter over after a reboot and that awfully long encryption password again. [I'm never install docker locally again](https://askubuntu.com/questions/935569/how-to-completely-uninstall-docker).
+
+```bash
+jasen@bertha DevOps-Desperate(main)$ minikube --version
+Command 'minikube' not found, did you mean:
+  command 'minitube' from deb minitube (3.9.1-1)
+Try: sudo apt install <deb name>
+jasen@bertha DevOps-Desperate(main)$ docker version
+Command 'docker' not found, but can be installed with:
+sudo snap install docker         # version 20.10.17, or
+sudo apt  install docker.io      # version 20.10.21-0ubuntu1~22.04.2
+sudo apt  install podman-docker  # version 3.4.4+ds1-1ubuntu1
+See 'snap info docker' for additional versions.
+jasen@bertha DevOps-Desperate(main)$ 
+```
+
+Success!.
+
+# Starting Over
+
+```bash
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube
+```
+
+I'm not using virtualbox. 
+
+```bash
+minikube start
+```
+
+Ok I have to install Docker again. 
+
+```bash
+sudo apt-get update
+sudo apt-get install ./Downloads/docker-desktop-4.17.0-amd64.deb
+eval $(minikube -p minikube docker-env)
+```
+
+OMG! No sudo and no errors and I never opened Docker in the background, all that and my telnet still isn't connecting. Going back to virtualbox.
+
+```bash
+docker build -t dftd/telnet-server:v2 .
+docker image ls dftd/telnet-server:v2
+docker run -p 2323:2323 -d --name telnet-server dftd/telnet-server:v2
+docker container ls -f name=telnet-server
+```
+
+**DEEP SIGH OF RELIEF** EVERYONE - THEY WROTE THE BOOK THIS WAY INTENTIONALLY!
+
+```bash
+jasen@bertha telnet-server(main*)$ minikube ip
+192.168.59.101
+jasen@bertha telnet-server(main*)$ telnet 192.168.59.101 2323
+Trying 192.168.59.101...
+Connected to 192.168.59.101.
+Escape character is '^]'.
+
+____________ ___________
+|  _  \  ___|_   _|  _  \
+| | | | |_    | | | | | |
+| | | |  _|   | | | | | |
+| |/ /| |     | | | |/ /
+|___/ \_|     \_/ |___/
+
+>d
+Sun Mar 12 16:37:19 +0000 UTC 2023
+>q
+Good Bye!
+Connection closed by foreign host.
+```
+
+## Holy moly batman what a trip
+
+When the going gets tough turn to 90s grunge. Pink Floyd also works. Nothing like the steel african drums in Jane Says though.
+
+AHHH all the keyboard shortcuts. Is your left pinky getting tired yet?
