@@ -8,7 +8,7 @@ I wasn't able to get Vagrant working through WSL on Windows either. Though I'm n
 
 At least for the time being if I want to use a laptop and I'm on my local network there's also [Remote - SSH](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh) to give you that local feeling. You could also see if you can do this from a [Dev Container](https://code.visualstudio.com/docs/devcontainers/containers) - this uses Docker which seems to run fine with Rosetta on MacOS. For example that could give you an Ubuntu based VSCode environment. Wow. I wonder if keybindings from the local OS would work... Well... in VSCode if you do that virtualbox won't install in Ubuntu on arm64 and pulling an amd64 image would keep crashing on run regardless of Rosetta.
 
-Alright let's get back to work. At least there VSCode can help out immediately. 
+Alright let's get back to work. At least there VSCode can help out immediately. This is actually pretty nice. Removes having to git push and git pull from client to host to vm. We lost a layer of the inception!
 
 ### Ubuntu
 
