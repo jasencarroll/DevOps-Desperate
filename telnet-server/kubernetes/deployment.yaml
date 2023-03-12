@@ -5,6 +5,7 @@ metadata:
   labels:
     app: telnet-server
 spec:
+  # this is total number of pods. 2 pods. not 3 pods. 
   replicas: 2
   selector:
     matchLabels:
