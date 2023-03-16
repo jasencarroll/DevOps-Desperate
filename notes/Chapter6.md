@@ -86,7 +86,7 @@ Removing intermediate container 22fffb844758
  ---> 2f32fb902fc6
 Successfully built 2f32fb902fc6
 Successfully tagged dftd/telnet-server:v1
-jasen@Renegade:telnet-server(main*)$ docker image ls dftd/telnet-server:v1
+jasen@Renegade:telnet-server(main*)$ docker image ls git 
 REPOSITORY           TAG       IMAGE ID       CREATED          SIZE
 dftd/telnet-server   v1        2f32fb902fc6   10 seconds ago   19MB
 jasen@Renegade:telnet-server(main*)$ docker run -p 2323:2323 -d --name telnet-server dftd/telnet-server:v1
