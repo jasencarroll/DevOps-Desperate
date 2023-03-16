@@ -1,5 +1,4 @@
 ---
-# create a load balanced to connect telnet-server from outside k8
 apiVersion: v1
 kind: Service
 metadata:
@@ -16,7 +15,6 @@ spec:
     app: telnet-server
   type: LoadBalancer
 ---
-# create ClusterIP to monitor metrics
 apiVersion: v1
 kind: Service
 metadata:
