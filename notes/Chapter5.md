@@ -31,8 +31,6 @@ PORT     STATE SERVICE
 Nmap done: 1 IP address (1 host up) scanned in 0.41 seconds
 ```
 
-Looks like I need to tell Ansible to turn off htttp.
-
 ### Running Services
 
 ```bash
@@ -50,9 +48,3 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 Nmap done: 1 IP address (1 host up) scanned in 6.93 seconds
 ```
-
-Well something got nginx running...
-
-AND it took about 3 hours to realize the next session was back on your local machine - not inside your VM. Along the way the VM stopped asking me for the passkey. Though I've spent enough time, my presumption is Ansible is bypassing the passkey and my manual method earlier was enforcing it somehow. 
-
-![Facepalm](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
